@@ -1,16 +1,21 @@
-// import React from "react";
+// import React, { Component } from "react";
 
-// const SliderContent = () => (
-//   <div
-//     style={{
+// class SliderContent extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {};
+//   }
+//   render() {
+//     const styles = {
 //       transform: `translateX(-${props => props.translate}px)`,
 //       transition: `transform ease-out ${props => props.transition}s`,
 //       height: "100%",
 //       width: `${props => props.width}px`,
 //       display: "flex"
-//     }}
-//   ></div>
-// );
+//     };
+//     return <div style={styles}></div>;
+//   }
+// }
 
 // export default SliderContent;
 

@@ -3,6 +3,7 @@ import SliderContent from "./SliderContent";
 import Slide from "./Slide";
 import ArrowRight from "./ArrowRight";
 import ArrowLeft from "./ArrowLeft";
+import Dots from "./Dots";
 
 /**
  * @function Slider
@@ -64,6 +65,8 @@ const Slider = props => {
       </SliderContent>
       <ArrowRight handleClick={nextSlide} />
       <ArrowLeft handleClick={prevSlide} />
+
+      <Dots slides={props.slides} activeIndex={activeIndex} />
     </div>
   );
 };
