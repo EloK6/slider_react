@@ -11,10 +11,10 @@ const Dot = ({ active }) => (
   />
 );
 
-const Dots = ({ slides, activeIndex }) => (
+const Dots = ({ slides, activeSlide }) => (
   <div className="Dots">
     {slides.map((slide, i) => (
-      <Dot key={slide} active={activeIndex === i} />
+      <Dot key={slide} active={activeSlide === i} />
     ))}
   </div>
 );
