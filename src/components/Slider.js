@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SliderContent from "./SliderContent";
 import Slide from "./Slide";
 import ArrowRight from "./ArrowRight";
 import ArrowLeft from "./ArrowLeft";
 import Dots from "./Dots";
 
-/**
- * @function Slider
- */
-const Slider = props => {
-  const getWidth = () => window.innerWidth;
+const getWidth = () => window.innerWidth;
 
+const Slider = props => {
   const [state, setState] = useState({
     activeIndex: 0,
     translate: 0,
@@ -18,6 +15,21 @@ const Slider = props => {
   });
 
   const { translate, transition, activeIndex } = state;
+  const autoPlayRef = useRef();
+
+  useEffect(() => {
+    autoPlayRef.current = nextSlide;
+  });
+
+  useEffect(() => {
+    const play = () => {
+      autoPlayRef.current();
+    };
+    if (props.autoPlay !== null) {
+      const interval = setInterval(play, props.autoPlay * 1000);
+      return () => clearInterval(interval);
+    }
+  }, [props.autoPlay]);
 
   const nextSlide = () => {
     if (activeIndex === props.slides.length - 1) {
@@ -51,7 +63,7 @@ const Slider = props => {
     });
   };
 
-  console.log(props);
+  // console.log(props);
   return (
     <div className="Slider">
       <SliderContent
@@ -63,12 +75,22 @@ const Slider = props => {
           <Slide key={slide} content={slide} />
         ))}
       </SliderContent>
-      <ArrowRight handleClick={nextSlide} />
-      <ArrowLeft handleClick={prevSlide} />
+
+      {!props.autoPlay && (
+        <>
+          <ArrowRight handleClick={nextSlide} />
+          <ArrowLeft handleClick={prevSlide} />
+        </>
+      )}
 
       <Dots slides={props.slides} activeIndex={activeIndex} />
     </div>
   );
+};
+
+Slider.defaultProps = {
+  slides: [],
+  autoPlay: null
 };
 
 export default Slider;

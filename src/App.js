@@ -12,7 +12,7 @@ class App extends Component {
     ];
     return (
       <div className="App">
-        <Slider slides={images} />
+        <Slider slides={images} autoPlay={3} />
       </div>
     );
   }

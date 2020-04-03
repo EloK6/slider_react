@@ -1,10 +1,6 @@
 // import React, { Component } from "react";
 
 // class SliderContent extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
 //   render() {
 //     const styles = {
 //       transform: `translateX(-${props => props.translate}px)`,
@@ -13,7 +9,7 @@
 //       width: `${props => props.width}px`,
 //       display: "flex"
 //     };
-//     return <div style={styles}></div>;
+//     return <div style={styles}>{this.props.children}</div>;
 //   }
 // }
 
